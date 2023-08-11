@@ -1,8 +1,17 @@
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { selectorAuthentication } from 'redux/selector';
 import { userRegisterThunk } from 'redux/user/userOperation';
 
 const Register = () => {
+  const userAut = useSelector(selectorAuthentication);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    userAut && navigate('/contacts');
+  }, [userAut, navigate]);
 
   const handelSubmit = ev => {
     ev.preventDefault();

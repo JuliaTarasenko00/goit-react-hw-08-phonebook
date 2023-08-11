@@ -1,16 +1,16 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const $instants = axios.create({
+export const $instants = axios.create({
   baseURL: 'https://connections-api.herokuapp.com/',
 });
 
 export const setToken = token => {
-  $instants.defaults.headers['Authorization'] = `Bearer ${token}`;
+  $instants.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
 
 export const clearToken = () => {
-  $instants.defaults.headers['Authorization'] = '';
+  $instants.defaults.headers.common['Authorization'] = '';
 };
 
 export const userRegisterThunk = createAsyncThunk(

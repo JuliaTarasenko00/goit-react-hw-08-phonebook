@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   userCurrentThunk,
   userLogOutThunk,
@@ -17,7 +17,7 @@ const initialState = {
   isLoading: false,
   error: null,
   user: null,
-  token: null,
+  token: '',
   authentication: false,
 };
 
@@ -26,16 +26,26 @@ export const authenticationSlice = createSlice({
   initialState,
   extraReducers: builder =>
     builder
-      .addCase(userRegisterThunk.pending, pendingUser)
       .addCase(userRegisterThunk.fulfilled, fulfilledUser)
-      .addCase(userRegisterThunk.rejected, rejectedUser)
-      .addCase(userLoginThunk.pending, pendingUser)
       .addCase(userLoginThunk.fulfilled, fulfilledUser)
-      .addCase(userLoginThunk.rejected, rejectedUser)
-      .addCase(userCurrentThunk.pending, pendingUser)
       .addCase(userCurrentThunk.fulfilled, fulfilledUserCurrent)
-      .addCase(userCurrentThunk.rejected, rejectedUser)
-      .addCase(userLogOutThunk.pending, pendingUser)
       .addCase(userLogOutThunk.fulfilled, logOutUserCurrent)
-      .addCase(userLogOutThunk.rejected, rejectedUser),
+      .addMatcher(
+        isAnyOf(
+          userRegisterThunk.pending,
+          userLoginThunk.pending,
+          userCurrentThunk.pending,
+          userLogOutThunk.pending
+        ),
+        pendingUser
+      )
+      .addMatcher(
+        isAnyOf(
+          userRegisterThunk.rejected,
+          userLoginThunk.rejected,
+          userCurrentThunk.rejected,
+          userLogOutThunk.rejected
+        ),
+        rejectedUser
+      ),
 });

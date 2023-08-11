@@ -29,6 +29,6 @@ export const logOutUserCurrent = state => {
   state.isLoading = false;
   state.authentication = false;
   state.user = null;
-  state.token = null;
+  state.token = '';
   state.error = null;
 };
