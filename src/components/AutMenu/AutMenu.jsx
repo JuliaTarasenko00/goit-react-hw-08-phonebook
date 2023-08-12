@@ -4,7 +4,7 @@ import { userLogOutThunk } from 'redux/user/userOperation';
 import { Button } from 'antd';
 import { selectorUser } from 'redux/selector';
 import { NavLink } from 'react-router-dom';
-import css from '../Layout/Layout.module.css';
+import css from '../Navigation/Navigation.module.css';
 
 const StyledBadge = styled(Badge)(() => ({
   '& .MuiBadge-badge': {

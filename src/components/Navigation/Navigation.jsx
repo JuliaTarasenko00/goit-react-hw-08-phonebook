@@ -3,7 +3,7 @@ import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import { useSelector } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom';
 import { selectorAuthentication } from 'redux/selector';
-import css from './Layout.module.css';
+import css from './Navigation.module.css';
 import UserMenu from 'components/UserMenu/UserMenu';
 import AutMenu from 'components/AutMenu/AutMenu';
 

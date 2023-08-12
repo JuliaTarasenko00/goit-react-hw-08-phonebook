@@ -9,7 +9,7 @@ import ErrorPage from 'page/ErroePage';
 import Loader from './Loader';
 
 const Home = lazy(() => import('../page/HomePage/Home'));
-const Layout = lazy(() => import('./Layout/Layout'));
+const Layout = lazy(() => import('./Navigation/Navigation'));
 const Login = lazy(() => import('../page/LoginPage'));
 const Register = lazy(() => import('../page/RegisterPage'));
 const Contacts = lazy(() => import('../page/ContactPage/ContactsPage'));
