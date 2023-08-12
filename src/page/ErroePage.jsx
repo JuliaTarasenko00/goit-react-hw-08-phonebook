@@ -1,10 +1,16 @@
+import { Container } from '@mui/material';
+import error from '../img/error.jpg';
+
 const ErrorPage = () => {
   return (
-    <img
-      src="https://blog.thomasnet.com/hubfs/shutterstock_774749455.jpg"
-      alt="Error Page"
-      width={800}
-    />
+    <Container>
+      <img
+        src={error}
+        alt="Error Page"
+        width={800}
+        style={{ paddingTop: 40, margin: 'auto' }}
+      />
+    </Container>
   );
 };
 

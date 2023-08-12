@@ -6,12 +6,13 @@ import { selectorToken, selectorUser } from 'redux/selector';
 import { userCurrentThunk } from 'redux/user/userOperation';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import ErrorPage from 'page/ErroePage';
-import Home from 'page/Home';
+import Loader from './Loader';
 
+const Home = lazy(() => import('../page/HomePage/Home'));
 const Layout = lazy(() => import('./Layout/Layout'));
 const Login = lazy(() => import('../page/LoginPage'));
 const Register = lazy(() => import('../page/RegisterPage'));
-const Contacts = lazy(() => import('../page/ContactsPage'));
+const Contacts = lazy(() => import('../page/ContactPage/ContactsPage'));
 
 export const App = () => {
   const userToken = useSelector(selectorToken);
@@ -25,7 +26,7 @@ export const App = () => {
   }, [userToken, dispatch, user]);
 
   return (
-    <Suspense fallback={<div>Login.....</div>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

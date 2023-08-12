@@ -1,10 +1,12 @@
+import FormRegister from 'components/FormRegister/FormRegister';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { selectorAuthentication } from 'redux/selector';
+import { selectorAuthentication, selectorError } from 'redux/selector';
 import { userRegisterThunk } from 'redux/user/userOperation';
 
 const Register = () => {
+  const error = useSelector(selectorError);
   const userAut = useSelector(selectorAuthentication);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,43 +30,9 @@ const Register = () => {
     };
 
     dispatch(userRegisterThunk(userRegister));
-
-    form.reset();
   };
 
-  return (
-    <>
-      <h1>Register Page</h1>
-      <form onSubmit={handelSubmit}>
-        <label>
-          <span>Login:</span>
-          <input
-            type="text"
-            name="loginUser"
-            required
-            autoComplete="username"
-          />
-        </label>
-        <br />
-        <label>
-          <span>Email:</span>
-          <input type="email" name="emailUser" required />
-        </label>
-        <br />
-        <label>
-          <span>Password:</span>
-          <input
-            type="password"
-            name="passwordUser"
-            required
-            autoComplete="current-password"
-          />
-        </label>
-        <br />
-        <button type="submit">Submit</button>
-      </form>
-    </>
-  );
+  return <FormRegister submitForm={handelSubmit} errorInput={error} />;
 };
 
 export default Register;

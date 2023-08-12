@@ -1,0 +1,22 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navigationLink {
+  padding: 10px;
+  border-radius: 50px;
+  color: white;
+
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.textAccount {
+  background: white;
+  color: black;
+  padding: 10px;
+  border-radius: 30px;
+  border: 2px solid greenyellow;
+}

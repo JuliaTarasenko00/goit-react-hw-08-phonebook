@@ -5,6 +5,17 @@ import {
   selectorIsLoadingContacts,
 } from 'redux/selector';
 import { deleteContact } from 'redux/contacts/contactsOperation';
+import {
+  Avatar,
+  IconButton,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+} from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import React from 'react';
+import { Typography } from 'antd';
 
 export const ContactList = () => {
   const contactsFilteredByName = useSelector(selectorFilterContact);
@@ -16,21 +27,49 @@ export const ContactList = () => {
   return (
     <>
       {contactsFilteredByName.length === 0 && !isLoading && (
-        <p style={{ marginTop: '10px', color: 'red' }}>
+        <p
+          style={{
+            marginTop: 10,
+            color: 'red',
+            textAlign: 'center',
+
+            fontSize: 40,
+          }}
+        >
           Your contacts will be here 😉
         </p>
       )}
-      <ul>
+      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
         {contactsFilteredByName?.map(({ name, number, id }) => (
-          <li key={id}>
-            <p>• {name}:</p>
-            <p>{number}</p>
-            <button type="button" onClick={() => deleteContacts(id)}>
-              Delete
-            </button>
-          </li>
+          <ListItem alignItems="flex-start" key={id}>
+            <ListItemAvatar>
+              <Avatar alt={name} src="/static/images/avatar.jpg" />
+            </ListItemAvatar>
+            <ListItemText
+              primary={name}
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    sx={{ display: 'inline' }}
+                    component="span"
+                    variant="body2"
+                    color="text.primary"
+                  >
+                    {number}
+                  </Typography>
+                </React.Fragment>
+              }
+            />
+            <IconButton
+              aria-label="delete"
+              type="button"
+              onClick={() => deleteContacts(id)}
+            >
+              <DeleteIcon style={{ color: 'red' }} />
+            </IconButton>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </>
   );
 };

@@ -1,3 +1,4 @@
+import { Container } from '@mui/material';
 import { ContactsForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
@@ -8,6 +9,8 @@ import {
   selectorAuthentication,
   selectorIsLoadingContacts,
 } from 'redux/selector';
+import css from './ContactPage.module.css';
+import Loader from 'components/Loader';
 
 const Contacts = () => {
   const isLoading = useSelector(selectorIsLoadingContacts);
@@ -19,26 +22,14 @@ const Contacts = () => {
   }, [dispatch, userAut]);
 
   return (
-    <div>
-      <h1>Phonebook</h1>
+    <Container>
+      <h2 className={css.titleContact}>Phonebook</h2>
       <ContactsForm />
-      <h2>Contacts</h2>
+      <h2 className={css.titleContact}>Contacts</h2>
       <Filter />
-      {isLoading && (
-        <p>Login......</p>
-        // <ThreeDots
-        //   height="80"
-        //   width="80"
-        //   radius="9"
-        //   color="blue"
-        //   ariaLabel="three-dots-loading"
-        //   wrapperStyle={{ justifyContent: 'center' }}
-        //   wrapperClassName=""
-        //   visible={true}
-        // />
-      )}
+      {isLoading && <Loader />}
       <ContactList />
-    </div>
+    </Container>
   );
 };
 
