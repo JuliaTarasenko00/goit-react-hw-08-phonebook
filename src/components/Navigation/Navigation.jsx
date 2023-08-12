@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom';
 import { selectorAuthentication } from 'redux/selector';
 import css from './Navigation.module.css';
+import Menu from 'components/Menu/Menu';
 import UserMenu from 'components/UserMenu/UserMenu';
-import AutMenu from 'components/AutMenu/AutMenu';
 
 const styleActive = ({ isActive }) => {
   return {
@@ -43,9 +43,9 @@ const Layout = () => {
                   </NavLink>
 
                   {!userAunt ? (
-                    <UserMenu styleActive={styleActive} />
+                    <Menu styleActive={styleActive} />
                   ) : (
-                    <AutMenu styleActive={styleActive} />
+                    <UserMenu styleActive={styleActive} />
                   )}
                 </Box>
               </Toolbar>
