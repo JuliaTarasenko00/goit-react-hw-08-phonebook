@@ -59,6 +59,7 @@ const AutMenu = ({ styleActive }) => {
           horizontal: 'right',
         }}
         variant="dot"
+        style={{ width: 40 }}
       >
         <Avatar alt={userName?.name} src="/static/images/avatar.jpg" />
       </StyledBadge>

@@ -24,6 +24,7 @@ const FormLogin = ({ submitForm, errorInput }) => {
               autoComplete="username"
               margin="normal"
               error={errorInput}
+              className={css.input}
             />
             <TextField
               label={'Password'}
@@ -34,6 +35,7 @@ const FormLogin = ({ submitForm, errorInput }) => {
               autoComplete="username"
               margin="normal"
               error={errorInput}
+              className={css.input}
             />
 
             <Button variant="contained" type="submit">

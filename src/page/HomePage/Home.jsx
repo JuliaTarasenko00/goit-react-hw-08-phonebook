@@ -7,7 +7,7 @@ const Home = () => {
     <Container>
       <h1 className={css.title}>Welcome to our website! </h1>
       <div className={css.containerHome}>
-        <img src={phone} alt="phone" loading="lazy" />
+        <img src={phone} alt="phone" loading="lazy" className={css.img} />
 
         <p className={css.text}>
           We are glad to present to you our new web service - the Contact site.
