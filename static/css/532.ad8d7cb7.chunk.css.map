@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/532.ad8d7cb7.chunk.css","mappings":"AAAA,4BAGE,kBAAmB,CADnB,YAAa,CAEb,QAAS,CAHT,YAIF","sources":["components/FormLogin/FormLogin.module.css"],"sourcesContent":[".container {\n  padding: 50px;\n  display: flex;\n  align-items: center;\n  gap: 60px;\n}\n"],"names":[],"sourceRoot":""}
