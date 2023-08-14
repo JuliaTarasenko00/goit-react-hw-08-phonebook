@@ -9,7 +9,7 @@ import ErrorPage from 'page/ErroePage';
 import Loader from './Loader';
 
 const Home = lazy(() => import('../page/HomePage/Home'));
-const Layout = lazy(() => import('./Navigation/Navigation'));
+const Navigation = lazy(() => import('./Navigation/Navigation'));
 const Login = lazy(() => import('../page/LoginPage'));
 const Register = lazy(() => import('../page/RegisterPage'));
 const Contacts = lazy(() => import('../page/ContactPage/ContactsPage'));
@@ -28,7 +28,7 @@ export const App = () => {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Navigation />}>
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

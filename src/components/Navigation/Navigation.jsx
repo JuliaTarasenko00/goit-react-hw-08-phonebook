@@ -1,63 +1,152 @@
-import { AppBar, Box, Container, Toolbar, Typography } from '@mui/material';
+import {
+  AppBar,
+  Box,
+  Container,
+  IconButton,
+  Toolbar,
+  Typography,
+  Menu,
+} from '@mui/material';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
-import { useSelector } from 'react-redux';
-import { NavLink, Outlet } from 'react-router-dom';
-import { selectorAuthentication } from 'redux/selector';
-import css from './Navigation.module.css';
-import Menu from 'components/Menu/Menu';
-import UserMenu from 'components/UserMenu/UserMenu';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Outlet } from 'react-router-dom';
+import Layout from 'components/Layout/Layout';
+import { useState } from 'react';
 
-const styleActive = ({ isActive }) => {
-  return {
-    color: isActive ? 'greenyellow' : 'white',
+const Navigation = () => {
+  const [anchorElNav, setAnchorElNav] = useState(null);
+
+  const handleOpenNavMenu = event => {
+    setAnchorElNav(event.currentTarget);
   };
-};
 
-const Layout = () => {
-  const userAunt = useSelector(selectorAuthentication);
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
   return (
     <>
-      <Container>
-        <nav>
-          <Box>
-            <AppBar position="static">
-              <Toolbar>
-                <ContactPhoneIcon
+      <nav>
+        {' '}
+        <Container>
+          <AppBar position="static">
+            <Toolbar>
+              <ContactPhoneIcon
+                sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
+              />
+              <Typography
+                variant="h6"
+                sx={{
+                  mr: 2,
+                  display: { xs: 'none', md: 'flex' },
+                  fontFamily: 'monospace',
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: 'inherit',
+                  textDecoration: 'none',
+                }}
+              >
+                Contacts
+              </Typography>
+              <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                <IconButton
                   size="large"
-                  edge="start"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
                   color="inherit"
-                  sx={{ mr: 2 }}
-                />
-                <Typography variant="h6" component="p" sx={{ flexGrow: 1 }}>
-                  Contacts
-                </Typography>
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Menu
+                  anchorEl={anchorElNav}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                    maxWidth: '500px',
+                  }}
+                  open={Boolean(anchorElNav)}
+                  onClose={handleCloseNavMenu}
+                  sx={{
+                    display: { xs: 'block', md: 'none' },
+                  }}
+                >
+                  <Layout />
+                </Menu>
+              </Box>
+              <ContactPhoneIcon
+                sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+              />
+              <Typography
+                variant="h5"
+                sx={{
+                  mr: 2,
+                  display: { xs: 'flex', md: 'none' },
+                  flexGrow: 3,
+                  fontFamily: 'monospace',
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: 'inherit',
+                  textDecoration: 'none',
+                }}
+              >
+                Contacts
+              </Typography>
 
-                <Box className={css.navigation}>
-                  <NavLink
-                    style={styleActive}
-                    className={css.navigationLink}
-                    to="/"
-                  >
-                    Home
-                  </NavLink>
-
-                  {!userAunt ? (
-                    <Menu styleActive={styleActive} />
-                  ) : (
-                    <UserMenu styleActive={styleActive} />
-                  )}
-                </Box>
-              </Toolbar>
-            </AppBar>
-          </Box>
-        </nav>
-      </Container>
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  display: { xs: 'none', md: 'flex' },
+                  flexDirection: 'row-reverse',
+                }}
+              >
+                <Layout />
+              </Box>
+            </Toolbar>
+          </AppBar>{' '}
+        </Container>
+      </nav>
       <main>
         <Outlet />
       </main>
     </>
   );
+  // return (
+  //   <>
+  //     <Container>
+  //       <nav>
+  //         <Box>
+  //           <AppBar position="static">
+  //             <Toolbar>
+  //               <ContactPhoneIcon
+  //                 size="large"
+  //                 edge="start"
+  //                 color="inherit"
+  //                 sx={{ mr: 2 }}
+  //               />
+  //               <Typography variant="h6" component="p" sx={{ flexGrow: 1 }}>
+  //                 Contacts
+  //               </Typography>
+
+  //               <Box className={css.navigation}>
+  //                 <Layout />
+  //               </Box>
+  //             </Toolbar>
+  //           </AppBar>
+  //         </Box>
+  //       </nav>
+  //     </Container>
+  //     <main>
+  //       <Outlet />
+  //     </main>
+  //   </>
+  // );
 };
 
-export default Layout;
+export default Navigation;

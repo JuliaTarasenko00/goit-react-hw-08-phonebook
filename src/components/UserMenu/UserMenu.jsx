@@ -10,7 +10,7 @@ const StyledBadge = styled(Badge)(() => ({
   '& .MuiBadge-badge': {
     backgroundColor: '#44b700',
     color: '#44b700',
-    boxShadow: `0 0 0 2px #1976d2`,
+    boxShadow: `0 0 0 2px transparent`,
     '&::after': {
       position: 'absolute',
       top: -1,
@@ -35,7 +35,7 @@ const StyledBadge = styled(Badge)(() => ({
   },
 }));
 
-const AutMenu = ({ styleActive }) => {
+const UserMenu = ({ styleActive }) => {
   const userName = useSelector(selectorUser);
   const dispatch = useDispatch();
   const logOutClick = () => {
@@ -71,4 +71,4 @@ const AutMenu = ({ styleActive }) => {
   );
 };
 
-export default AutMenu;
+export default UserMenu;

@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import css from '../Navigation/Navigation.module.css';
 
-const UserMenu = ({ styleActive }) => {
+const AutMenu = ({ styleActive }) => {
   return (
     <>
       <NavLink style={styleActive} className={css.navigationLink} to="/login">
@@ -19,4 +19,4 @@ const UserMenu = ({ styleActive }) => {
   );
 };
 
-export default UserMenu;
+export default AutMenu;
