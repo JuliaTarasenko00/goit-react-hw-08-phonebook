@@ -1,7 +1,7 @@
 export const pendingUser = state => {
   state.isLoading = true;
   state.authentication = false;
-  state.error = false;
+  state.error = null;
 };
 
 export const fulfilledUser = (state, { payload }) => {
@@ -9,7 +9,7 @@ export const fulfilledUser = (state, { payload }) => {
   state.authentication = true;
   state.user = payload.user;
   state.token = payload.token;
-  state.error = false;
+  state.error = null;
 };
 
 export const rejectedUser = state => {
@@ -22,7 +22,7 @@ export const fulfilledUserCurrent = (state, { payload }) => {
   state.isLoading = false;
   state.authentication = true;
   state.user = payload;
-  state.error = false;
+  state.error = null;
 };
 
 export const logOutUserCurrent = state => {
@@ -30,5 +30,5 @@ export const logOutUserCurrent = state => {
   state.authentication = false;
   state.user = null;
   state.token = '';
-  state.error = false;
+  state.error = null;
 };

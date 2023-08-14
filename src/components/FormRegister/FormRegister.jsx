@@ -2,7 +2,7 @@ import { Box, Button, Container, TextField } from '@mui/material';
 import css from '../FormLogin/FormLogin.module.css';
 import RandomImg from 'components/RandomImg/RandomImg';
 
-const FormRegister = ({ submitForm, errorInput }) => {
+const FormRegister = ({ submitForm }) => {
   return (
     <Container>
       <div className={css.container}>
@@ -24,7 +24,6 @@ const FormRegister = ({ submitForm, errorInput }) => {
               helperText="Please enter your login"
               autoComplete="username"
               margin="normal"
-              error={errorInput}
             />
             <TextField
               label={'Email'}
@@ -34,7 +33,6 @@ const FormRegister = ({ submitForm, errorInput }) => {
               helperText="Please enter your email"
               autoComplete="username"
               margin="normal"
-              error={errorInput}
             />
             <TextField
               label={'Password'}
@@ -44,7 +42,6 @@ const FormRegister = ({ submitForm, errorInput }) => {
               helperText="Please enter your password"
               autoComplete="username"
               margin="normal"
-              error={errorInput}
             />
 
             <Button variant="contained" type="submit">

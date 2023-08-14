@@ -1,12 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectorAuthentication, selectorError } from 'redux/selector';
+import { selectorAuthentication } from 'redux/selector';
 import { userLoginThunk } from 'redux/user/userOperation';
 import FormLogin from 'components/FormLogin/FormLogin';
 
 const Login = () => {
-  const error = useSelector(selectorError);
   const userAut = useSelector(selectorAuthentication);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,7 +29,7 @@ const Login = () => {
     dispatch(userLoginThunk(userLogin));
   };
 
-  return <FormLogin submitForm={handelSubmit} errorInput={error} />;
+  return <FormLogin submitForm={handelSubmit} />;
 };
 
 export default Login;
