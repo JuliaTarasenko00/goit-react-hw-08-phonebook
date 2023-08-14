@@ -1,5 +1,5 @@
 import { Container } from '@mui/material';
-import error from '../img/error.jpg';
+import error from '../img/errorimg/error.jpg';
 
 const ErrorPage = () => {
   return (
@@ -7,7 +7,7 @@ const ErrorPage = () => {
       <img
         src={error}
         alt="Error Page"
-        width={800}
+        width="800"
         style={{ paddingTop: 40, margin: 'auto' }}
       />
     </Container>

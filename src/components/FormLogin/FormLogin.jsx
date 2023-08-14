@@ -1,6 +1,6 @@
 import { Box, Button, Container, TextField } from '@mui/material';
 import css from './FormLogin.module.css';
-import RandomImg from 'components/RandomImg/RandomImg';
+import RandomImg from 'components/RandomImg';
 
 const FormLogin = ({ submitForm }) => {
   return (
