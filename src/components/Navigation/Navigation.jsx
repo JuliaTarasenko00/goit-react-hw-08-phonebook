@@ -27,7 +27,6 @@ const Navigation = () => {
   return (
     <>
       <nav>
-        {' '}
         <Container>
           <AppBar position="static">
             <Toolbar>
@@ -117,36 +116,6 @@ const Navigation = () => {
       </main>
     </>
   );
-  // return (
-  //   <>
-  //     <Container>
-  //       <nav>
-  //         <Box>
-  //           <AppBar position="static">
-  //             <Toolbar>
-  //               <ContactPhoneIcon
-  //                 size="large"
-  //                 edge="start"
-  //                 color="inherit"
-  //                 sx={{ mr: 2 }}
-  //               />
-  //               <Typography variant="h6" component="p" sx={{ flexGrow: 1 }}>
-  //                 Contacts
-  //               </Typography>
-
-  //               <Box className={css.navigation}>
-  //                 <Layout />
-  //               </Box>
-  //             </Toolbar>
-  //           </AppBar>
-  //         </Box>
-  //       </nav>
-  //     </Container>
-  //     <main>
-  //       <Outlet />
-  //     </main>
-  //   </>
-  // );
 };
 
 export default Navigation;
