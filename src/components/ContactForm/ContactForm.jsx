@@ -39,9 +39,7 @@ export const ContactsForm = () => {
     const name = form.elements.name.value;
     const number = form.elements.number.value;
     const cleanedNumber = number.replace(/\D/g, '');
-    const numberClean = cleanedNumber.split('');
-    const deleteNumber = numberClean.splice(0, 2);
-    console.log('deleteNumber: ', deleteNumber);
+    const numberClean = cleanedNumber.split('').splice(2);
     const filterNameContact = contacts.some(contacts => contacts.name === name);
     if (filterNameContact) {
       return toast.error(`${name} is already in contacts.`);
