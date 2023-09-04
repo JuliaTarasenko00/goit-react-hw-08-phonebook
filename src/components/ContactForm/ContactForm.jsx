@@ -8,14 +8,15 @@ import { Box, Button, TextField } from '@mui/material';
 import css from './ContactsForm.module.css';
 import { addContact } from 'redux/contacts/contactsOperation';
 
-const TextMaskCustom = forwardRef(function TextMaskCustom(props, ref) {
+export const TextMaskCustom = forwardRef(function TextMaskCustom(props, ref) {
   const { onChange, ...other } = props;
   return (
     <IMaskInput
       {...other}
-      mask="+38(000) 000-00-00"
+      mask="+38(#*0)000-00-00"
       definitions={{
-        '#': /^(0[56789]\d{1})(\d{2})(\d{2})$/,
+        '#': /[0]/,
+        '*': /[6,7,8,9,5]/,
       }}
       inputRef={ref}
       onAccept={value => onChange({ target: { name: props.name, value } })}
@@ -39,14 +40,14 @@ export const ContactsForm = () => {
     const name = form.elements.name.value;
     const number = form.elements.number.value;
     const cleanedNumber = number.replace(/\D/g, '');
-    const numberClean = cleanedNumber.split('').splice(2);
+    const numberClean = cleanedNumber.split('').splice(2).join('');
     const filterNameContact = contacts.some(contacts => contacts.name === name);
     if (filterNameContact) {
       return toast.error(`${name} is already in contacts.`);
     }
     const contact = {
       name,
-      number: numberClean.join(''),
+      number: numberClean,
     };
     dispatch(addContact(contact));
 
@@ -81,7 +82,7 @@ export const ContactsForm = () => {
             }}
             required
             helperText="Please enter a phone number in Ukrainian format"
-            pattern="^\+38\(\d{3}\)\d{3}-\d{2}-\d{2}$"
+            pattern="/^(0[56789]\d{1})(\d{2})(\d{2})$/"
           />
           <Button className={css.btnContact} variant="outlined" type="submit">
             Add contact
